@@ -30,6 +30,18 @@ $page = $_GET['page'] ?? "";
                 case "note-delete":
                     $notecontroller->deleteNote($_REQUEST['id']);
                     break;
+                    case "note-update":
+                        if($_SERVER["REQUEST_METHOD"]=="GET"){
+                            $notecontroller->showFormUpdate();
+                        }else{
+                            $notecontroller->updateNote($_POST,$_REQUEST['id']);
+                        }
+                        
+                        break;
+                        case "note-detail":
+                            $notecontroller->detailNote();
+                            break;
+
 
             default:
     }

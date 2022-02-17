@@ -26,4 +26,16 @@ class NoteController
     public function deleteNote($id){
         $this->noteModel->deleteById($id);
     }
+    public function showFormUpdate(){
+       $notes = $this->noteModel->getById($_GET["id"]);
+        include "MVC/View/Note/update.php";
+    }
+    public function updateNote($request,$id){
+        $this->noteModel->update($request,$id);
+        header("location:index.php?page=note-list");
+    }
+    public function detailNote(){
+       $notes =  $this->noteModel->getById($_GET['id']);
+        include "MVC/View/Note/detail.php";
+    }
 }
