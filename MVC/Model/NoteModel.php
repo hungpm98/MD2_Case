@@ -24,8 +24,8 @@ class NoteModel extends BaseModel{
     }
     public function getAll()
     {
-        $sql = "select notes.id as id,title,content,category_id ,categories.id as name, description 
-        from notes join categories on category_id = categories.id";
+        $sql = "select notes.id as id,notes.title as title,notes.content as content,notes.category_id as category_id ,categories.name as name, categories.description as description 
+        from notes join categories on notes.category_id = categories.id";
         $stmt = $this->connect->query($sql);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
